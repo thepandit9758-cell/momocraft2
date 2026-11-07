@@ -1,0 +1,133 @@
+/* ==========================================================================
+   MomoCraft Pure Veg - Modern 3D Restaurant Website Stylesheet
+   ========================================================================== */
+
+/* Base Styles & Typography */
+:root {
+  --brand-primary: #f97316;
+  --brand-secondary: #ea580c;
+  --veg-green: #22c55e;
+  --veg-dark: #15803d;
+  --spicy-red: #ef4444;
+  --accent-gold: #fbbf24;
+  --dark-bg: #080a10;
+  --card-bg: rgba(20, 24, 36, 0.88);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: #f3f4f6;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* 3D Realistic Showcase Stage */
+.stage-3d {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.dish-3d-card {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  position: relative;
+}
+
+.dish-3d-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(249, 115, 22, 0.25), 0 0 25px rgba(34, 197, 94, 0.12);
+}
+
+/* Dynamic Glare effect on mouse move */
+.glare-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+  z-index: 15;
+}
+
+.dish-3d-card:hover .glare-overlay {
+  opacity: 1;
+}
+
+/* Realistic Steam Canvas Animation */
+.steam-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Glassmorphism Panels */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+}
+
+.glass-card-veg {
+  background: rgba(18, 28, 24, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #090c13;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand-primary);
+  border-radius: 999px;
+}
+
+/* Floating animation */
+@keyframes subtle-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.8deg); }
+}
+
+.float-anim {
+  animation: subtle-float 6s ease-in-out infinite;
+}
+
+/* Standee Print Layout */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-standee, #printable-standee * {
+    visibility: visible;
+  }
+  #printable-standee {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

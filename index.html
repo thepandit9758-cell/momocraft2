@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>momo craft • 100% Pure Veg Artisan Dumplings & 3D QR Menu</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- QRCode.js for Standee Generator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+              900: '#7c2d12',
+            },
+            spicy: '#ef4444',
+            veg: {
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT STRIP: 100% PURE VEG GUARANTEE -->
+  <div
+    class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-900 text-white text-xs py-2 px-4 border-b border-emerald-600/40">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 font-medium">
+      <div class="flex items-center space-x-2">
+        <span
+          class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-white text-emerald-700 text-[10px] font-bold">🌱</span>
+        <span class="font-extrabold tracking-wide uppercase text-amber-200">100% Pure Vegetarian Kitchen (शुद्ध
+          शाकाहारी)</span>
+        <span class="hidden md:inline text-emerald-200">• Dedicated Veg Steamers & Fryers</span>
+      </div>
+      <div class="flex items-center space-x-4 text-xs">
+        <span class="text-emerald-100 flex items-center">
+          <i class="fa-solid fa-clock mr-1.5 text-amber-300"></i> Open Daily: <strong>4:00 PM – 11:00 PM</strong>
+        </span>
+        <a href="tel:+910000000000" class="hover:text-amber-200 transition font-bold flex items-center">
+          <i class="fa-solid fa-phone mr-1 text-amber-300"></i> +91 0000000000
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN WEBSITE NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 glass-card border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 via-brand-500 to-amber-500 p-0.5 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-2xl">
+            🥟
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span
+              class="font-heading font-black text-2xl tracking-tight text-white group-hover:text-brand-400 transition">
+              Momo<span class="text-brand-500">Craft</span>
+            </span>
+            <span
+              class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-wider flex items-center">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1 animate-pulse"></span> Pure Veg
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-400 font-medium -mt-0.5">
+            Artisan Himalayan Dumplings & 3D QR Menu
+          </p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center space-x-1 bg-slate-900/80 p-1.5 rounded-full border border-slate-800">
+        <a href="#hero"
+          class="px-4 py-2 rounded-full text-xs font-bold text-slate-300 hover:text-white transition">Home</a>
+        <a href="#showcase-3d"
+          class="px-4 py-2 rounded-full text-xs font-bold text-slate-300 hover:text-white transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-cube text-brand-400"></i>
+          <span>Realistic 3D Dish</span>
+        </a>
+        <a href="#menu-section"
+          class="px-4 py-2 rounded-full text-xs font-bold text-slate-300 hover:text-white transition">Pure Veg Menu</a>
+        <a href="#recipe-secrets"
+          class="px-4 py-2 rounded-full text-xs font-bold text-slate-300 hover:text-white transition">Chef Recipes</a>
+        <a href="#standee-section"
+          class="px-4 py-2 rounded-full text-xs font-bold text-amber-300 hover:text-white transition flex items-center space-x-1">
+          <i class="fa-solid fa-qrcode"></i>
+          <span>Table QR Standee</span>
+        </a>
+        <a href="#contact-section"
+          class="px-4 py-2 rounded-full text-xs font-bold text-slate-300 hover:text-white transition">Contact &
+          Location</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center space-x-3">
+        <button id="btn-select-table"
+          class="bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs px-3.5 py-2 rounded-xl font-semibold text-slate-200 flex items-center space-x-2 transition shadow-sm">
+          <i class="fa-solid fa-utensils text-emerald-400"></i>
+          <span id="header-table-name">Table 3</span>
+          <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+        </button>
+
+        <a href="https://wa.me/7983129724?text=Hi%20MomoCraft!%20I%20am%20viewing%20your%20website%20menu%20and%20want%20to%20order."
+          target="_blank" rel="noopener noreferrer"
+          class="hidden sm:flex items-center space-x-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3.5 py-2 rounded-xl font-bold transition shadow-md shadow-emerald-600/20">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>Order on WhatsApp</span>
+        </a>
+
+        <button id="btn-open-cart"
+          class="relative bg-gradient-to-r from-brand-600 to-spicy hover:from-brand-500 hover:to-orange-500 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center space-x-2 shadow-lg shadow-brand-500/25 transition transform active:scale-95">
+          <i class="fa-solid fa-basket-shopping text-sm"></i>
+          <span class="hidden sm:inline">Cart</span>
+          <span id="cart-pill-count"
+            class="bg-white text-brand-600 text-[11px] px-1.5 py-0.2 rounded-full font-black">0</span>
+          <span id="cart-pill-total" class="font-extrabold text-amber-200">₹0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION: REALISTIC 3D FOOD PRESENTATION -->
+  <section id="hero"
+    class="relative overflow-hidden pt-8 pb-16 lg:py-20 bg-gradient-to-b from-[#0e121d] via-[#080a10] to-[#080a10]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Left: Copy & Trust Signals -->
+        <div class="lg:col-span-7 space-y-6">
+          <div
+            class="inline-flex items-center space-x-2.5 bg-emerald-950/80 border border-emerald-500/40 px-4 py-1.5 rounded-full shadow-inner">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-xs font-black text-emerald-300 uppercase tracking-widest">
+              🌱 100% Shuddh Shakahari (Pure Veg) Kitchen
+            </span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight text-white leading-[1.12]">
+            Artisan Pure Veg Momos, <br>
+            <span class="bg-gradient-to-r from-emerald-400 via-amber-300 to-brand-500 bg-clip-text text-transparent">
+              Realistic 3D Experience.
+            </span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+            Welcome to the future of street food! Scan table QR code to explore our authentic hand-pleated dumplings in
+            interactive 3D with realistic depth, ingredients, and secret mountain recipes. Order instantly via WhatsApp
+            or call our shop.
+          </p>
+
+          <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
+            <div class="glass-card-veg p-3 rounded-2xl text-center">
+              <div class="text-xl font-black text-emerald-400">100% Veg</div>
+              <div class="text-[11px] text-slate-400 font-medium">Pure Ingredients</div>
+            </div>
+            <div class="glass-card p-3 rounded-2xl text-center">
+              <div class="text-xl font-black text-amber-400">14-Pleat</div>
+              <div class="text-[11px] text-slate-400 font-medium">Thin Hand Dough</div>
+            </div>
+            <div class="glass-card p-3 rounded-2xl text-center">
+              <div class="text-xl font-black text-brand-400">Secret Dip</div>
+              <div class="text-[11px] text-slate-400 font-medium">Chili Garlic Chutney</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3.5 pt-3">
+            <a href="#menu-section"
+              class="bg-gradient-to-r from-brand-600 via-orange-600 to-spicy hover:from-brand-500 hover:to-orange-500 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-xl shadow-brand-600/30 flex items-center space-x-2 text-sm transition transform active:scale-95">
+              <i class="fa-solid fa-utensils"></i>
+              <span>Explore Menu & Prices</span>
+            </a>
+
+            <a href="#standee-section"
+              class="glass-card hover:bg-slate-800 text-amber-300 border border-amber-500/30 font-bold px-5 py-3.5 rounded-xl text-sm flex items-center space-x-2 transition">
+              <i class="fa-solid fa-qrcode text-base"></i>
+              <span>Table QR Standee</span>
+            </a>
+
+            <a href="tel:+910000000000"
+              class="glass-card hover:bg-slate-800 text-emerald-400 border border-emerald-500/30 font-bold px-5 py-3.5 rounded-xl text-sm flex items-center space-x-2 transition">
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 00000000</span>
+            </a>
+          </div>
+
+          <div class="flex items-center space-x-2 text-xs text-slate-400 pt-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            <span>Live Kitchen Open • Dine-in & Takeaway Available • Food Plaza Shop #12</span>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Realistic 3D Dish Platter -->
+        <div class="lg:col-span-5 stage-3d">
+          <div id="hero-3d-card"
+            class="dish-3d-card glass-card p-5 sm:p-6 rounded-3xl border border-emerald-500/30 shadow-2xl relative overflow-hidden group cursor-pointer">
+            <div class="glare-overlay"></div>
+
+            <div class="flex items-center justify-between pb-3 text-xs border-b border-slate-800 relative z-20">
+              <div class="flex items-center space-x-2">
+                <span class="w-3.5 h-3.5 rounded-sm border-2 border-emerald-500 p-0.5 flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                </span>
+                <span class="font-extrabold text-emerald-400 uppercase tracking-wider text-[11px]">
+                  100% Pure Veg Signature
+                </span>
+              </div>
+              <span class="text-amber-400 font-bold flex items-center space-x-1 text-[11px]">
+                <i class="fa-solid fa-hand-pointer animate-bounce mr-1"></i>
+                <span>Move Mouse for 3D Tilt</span>
+              </span>
+            </div>
+
+            <!-- Photorealistic Dish Image with Canvas Steam Overlay -->
+            <div
+              class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden my-4 shadow-2xl border border-slate-700/80 bg-slate-950">
+              <img id="hero-dish-img" src="steamed_momos.jpg" alt="Artisan Steamed Veg Momos"
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+              <canvas id="steam-canvas" class="steam-container"></canvas>
+              <div
+                class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent">
+              </div>
+
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between z-20">
+                <div class="bg-black/75 backdrop-blur-md px-3 py-1 rounded-xl border border-slate-700 text-xs">
+                  <span class="text-amber-400 font-black" id="hero-dish-title">Classic Steamed Mountain Veg Momos</span>
+                </div>
+                <div id="hero-dish-price"
+                  class="bg-emerald-950/80 backdrop-blur-md px-2.5 py-1 rounded-xl border border-emerald-500/50 text-emerald-300 text-xs font-bold">
+                  ₹50 <span class="text-[10px] text-slate-400 font-normal">/ Half</span> • ₹90 <span
+                    class="text-[10px] text-slate-400 font-normal">/ Full</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3 relative z-20 pt-1">
+              <p class="text-xs text-slate-300 leading-relaxed" id="hero-dish-desc">
+                Hand-pleated paper-thin translucent dough stuffed with shredded Himalayan cabbage, carrots, bell
+                peppers, fresh ginger extract, and tossed in melted butter.
+              </p>
+
+              <!-- Dish Switcher Pills -->
+              <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-[11px]">
+                <button data-dish="steamed"
+                  class="hero-dish-pill active px-3 py-1 rounded-lg font-bold bg-brand-600 text-white shrink-0 transition">
+                  Steamed Veg
+                </button>
+                <button data-dish="kurkure"
+                  class="hero-dish-pill px-3 py-1 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:text-white shrink-0 transition">
+                  Crispy Kurkure
+                </button>
+                <button data-dish="tandoori"
+                  class="hero-dish-pill px-3 py-1 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:text-white shrink-0 transition">
+                  Smoky Tandoori
+                </button>
+                <button data-dish="afghani"
+                  class="hero-dish-pill px-3 py-1 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:text-white shrink-0 transition">
+                  Creamy Malai
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+                <button id="btn-hero-read-recipe"
+                  class="text-amber-400 hover:text-amber-300 text-xs font-bold flex items-center space-x-1.5">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>Read Secret Recipe</span>
+                </button>
+
+                <button id="btn-hero-order-this"
+                  class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-md transition transform active:scale-95 flex items-center space-x-1.5">
+                  <i class="fa-solid fa-plus"></i>
+                  <span>Add to Order</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D REALISTIC DISH SHOWCASE SECTION -->
+  <section id="showcase-3d" class="py-16 bg-gradient-to-b from-[#080a10] via-[#0d1017] to-[#080a10]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span
+          class="bg-brand-500/20 text-brand-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-brand-500/30">
+          Interactive Platter Inspector
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-white">
+          Realistic 3D Dish Gallery
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Touch or move your cursor over the platter to experience realistic depth, specular light reflections, and
+          authentic food photography.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Showcase Card 1: Steamed Momos -->
+        <div class="dish-3d-card glass-card rounded-3xl p-5 border border-slate-800 flex flex-col justify-between">
+          <div class="glare-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between pb-3">
+              <span class="flex items-center space-x-1.5 text-xs text-emerald-400 font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Steamed Bamboo Platter</span>
+              </span>
+              <span class="text-xs text-amber-400 font-bold"><i class="fa-solid fa-star mr-1"></i>4.9 (350+)</span>
+            </div>
+
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden my-2 shadow-xl border border-slate-700/80">
+              <img src="steamed_momos.jpg" alt="Classic Steamed Veg Momos"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+
+            <h3 class="font-heading font-black text-lg text-white mt-3">Classic Mountain Steamed Momos</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+              Steamed to translucent perfection in bamboo baskets with our 12-spice fiery chili chutney and garlic mayo.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between mt-4">
+            <div>
+              <span class="text-[10px] text-slate-400 block">Starting At</span>
+              <span class="text-lg font-black font-heading text-amber-400">₹50 (Half)</span>
+            </div>
+            <button onclick="openRecipeById('steamed-veg')"
+              class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-400/30 text-xs font-bold px-3 py-2 rounded-xl transition">
+              <i class="fa-solid fa-book-open mr-1"></i> Recipe
+            </button>
+          </div>
+        </div>
+
+        <!-- Showcase Card 2: Crispy Kurkure Momos -->
+        <div class="dish-3d-card glass-card rounded-3xl p-5 border border-slate-800 flex flex-col justify-between">
+          <div class="glare-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between pb-3">
+              <span class="flex items-center space-x-1.5 text-xs text-emerald-400 font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Crunchy Golden Crust</span>
+              </span>
+              <span class="text-xs text-amber-400 font-bold"><i class="fa-solid fa-star mr-1"></i>4.9 (420+)</span>
+            </div>
+
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden my-2 shadow-xl border border-slate-700/80 relative">
+              <img src="kurkure_momos.jpg" alt="Crispy Kurkure Veg Momos"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute top-2 right-2 bg-spicy text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase shadow">
+                Crunch King
+              </div>
+            </div>
+
+            <h3 class="font-heading font-black text-lg text-white mt-3">Crispy Kurkure Veg Momos</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+              Dipped in herb batter, coated in spiced cornflake crust, fried golden and tossed with peri-peri masala.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between mt-4">
+            <div>
+              <span class="text-[10px] text-slate-400 block">Starting At</span>
+              <span class="text-lg font-black font-heading text-amber-400">₹70 (Half)</span>
+            </div>
+            <button onclick="openRecipeById('kurkure-crunchy')"
+              class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-400/30 text-xs font-bold px-3 py-2 rounded-xl transition">
+              <i class="fa-solid fa-book-open mr-1"></i> Recipe
+            </button>
+          </div>
+        </div>
+
+        <!-- Showcase Card 3: Smoky Tandoori Momos -->
+        <div class="dish-3d-card glass-card rounded-3xl p-5 border border-slate-800 flex flex-col justify-between">
+          <div class="glare-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between pb-3">
+              <span class="flex items-center space-x-1.5 text-xs text-emerald-400 font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Live Charcoal Smoked</span>
+              </span>
+              <span class="text-xs text-amber-400 font-bold"><i class="fa-solid fa-star mr-1"></i>4.8 (290+)</span>
+            </div>
+
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden my-2 shadow-xl border border-slate-700/80 relative">
+              <img src="tandoori_momos.jpg" alt="Smoky Tandoori Momos"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute top-2 right-2 bg-amber-500 text-black text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase shadow">
+                Charcoal Grill
+              </div>
+            </div>
+
+            <h3 class="font-heading font-black text-lg text-white mt-3">Smoky Charcoal Tandoori Momos</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+              Marinated in thick spiced curd and mustard oil, roasted on skewers over live charcoal embers and drenched
+              in pure butter.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between mt-4">
+            <div>
+              <span class="text-[10px] text-slate-400 block">Starting At</span>
+              <span class="text-lg font-black font-heading text-amber-400">₹80 (Half)</span>
+            </div>
+            <button onclick="openRecipeById('tandoori-smoked')"
+              class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-400/30 text-xs font-bold px-3 py-2 rounded-xl transition">
+              <i class="fa-solid fa-book-open mr-1"></i> Recipe
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 100% PURE VEG MENU SECTION WITH REALISTIC VISUALS -->
+  <section id="menu-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+      <div>
+        <div class="flex items-center space-x-2 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>100% Shuddh Shakahari Menu</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-white">
+          Our Special Veg Momos Menu
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Realistic photo preview on every card! Select Half plate (5 pcs) or Full plate (10 pcs).
+        </p>
+      </div>
+
+      <div class="relative w-full md:w-80">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+        <input type="text" id="menu-search-input" placeholder="Search momos (e.g. paneer, kurkure, tandoori)..."
+          class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-9 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+      </div>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap items-center gap-2 bg-slate-900/70 p-2 rounded-2xl border border-slate-800">
+      <button data-cat="all"
+        class="cat-pill active px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white transition shadow-sm">
+        🌱 All Veg Momos (9)
+      </button>
+      <button data-cat="steamed"
+        class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition">
+        Steamed Basket 🥟
+      </button>
+      <button data-cat="crispy"
+        class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition">
+        Kurkure & Fried 🍤
+      </button>
+      <button data-cat="tandoori"
+        class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition">
+        Tandoori Charcoal 🔥
+      </button>
+      <button data-cat="gravy"
+        class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition">
+        Afghani Malai & Gravy 🥣
+      </button>
+    </div>
+
+    <!-- Menu Cards Grid (Injected with Realistic Photos via JS) -->
+    <div id="menu-items-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- CHEF RECIPES SECTION -->
+  <section id="recipe-secrets" class="py-16 bg-slate-950 border-t border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span
+          class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-amber-500/30">
+          Culinary Transparency
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-white">
+          Our Secret Mountain Recipes & Dips
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Pure vegetable oils, freshly grated paneer, and authentic mountain spices only.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+          <div
+            class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold">
+            1</div>
+          <h3 class="font-heading font-black text-lg text-white">The 14-Pleat Translucent Wrapper</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Premium fine flour kneaded with warm water and rested for 30 minutes under damp muslin. Rolled to a 1mm thin
+            border to hold the hot juices.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+          <div
+            class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold">
+            2</div>
+          <h3 class="font-heading font-black text-white text-lg">Fresh Crunchy Veg & Paneer Filling</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Mountain cabbage, sweet carrots, capsicum, and fresh Malai Paneer tossed with crushed black pepper, pure
+            butter, ginger extract, and rock salt.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-spicy/20 text-spicy flex items-center justify-center text-xl font-bold">3
+          </div>
+          <h3 class="font-heading font-black text-white text-lg">Fiery 12-Spice Garlic Tomato Dip</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Kashmiri dried red chilies soaked, blended with oven-roasted tomatoes, 15 garlic cloves, vinegar, and
+            finished with toasted sesame oil.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE QR STANDEE GENERATOR -->
+  <section id="standee-section" class="py-16 bg-gradient-to-b from-[#080a10] via-[#0d121c] to-[#080a10]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+        <div>
+          <span
+            class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-amber-500/30">
+            Table Tent & Standee Tool
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black font-heading text-white mt-1">
+            Table QR Standee Generator
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400">
+            Customise your shop table cards, generate live scannable QR codes, and print ready-to-use table tents.
+          </p>
+        </div>
+
+        <button id="btn-print-standee"
+          class="bg-gradient-to-r from-amber-500 to-brand-600 hover:from-amber-400 hover:to-brand-500 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg flex items-center space-x-2 text-xs transition">
+          <i class="fa-solid fa-print"></i>
+          <span>Print Table Standee</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-5 glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+          <h3 class="font-bold text-white text-sm uppercase tracking-wider">Customize Standee Card</h3>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Shop Name</label>
+            <input type="text" id="standee-shop-input" value="MomoCraft Pure Veg"
+              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-emerald-500 focus:outline-none">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Table Number</label>
+              <input type="text" id="standee-table-input" value="Table 3"
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Contact Phone</label>
+              <input type="text" id="standee-phone-input" value="+91 7983129724"
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-emerald-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Target Menu URL for QR</label>
+            <input type="text" id="standee-url-input" value="https://momocraft.menu/#table=3"
+              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-emerald-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Call to Action Tagline</label>
+            <input type="text" id="standee-tagline-input" value="Scan with Phone Camera to View 3D Menu & Order"
+              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-emerald-500 focus:outline-none">
+          </div>
+
+          <button id="btn-update-qr"
+            class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-rotate text-emerald-400"></i>
+            <span>Refresh QR Preview</span>
+          </button>
+        </div>
+
+        <!-- Standee Preview -->
+        <div class="lg:col-span-7 flex justify-center">
+          <div id="printable-standee"
+            class="w-full max-w-sm bg-gradient-to-b from-slate-900 via-slate-950 to-black p-6 rounded-3xl border-2 border-emerald-500 shadow-2xl text-center space-y-4 text-white relative">
+            <div class="w-16 h-1 bg-gradient-to-r from-emerald-400 to-amber-400 mx-auto rounded-full"></div>
+
+            <div class="space-y-1">
+              <span class="text-3xl inline-block">🥟</span>
+              <h3 id="preview-shop" class="font-heading font-black text-2xl text-white">MomoCraft Pure Veg</h3>
+              <p class="text-[11px] text-emerald-400 font-extrabold uppercase tracking-widest">🌱 100% Shuddh Shakahari
+              </p>
+            </div>
+
+            <div
+              class="inline-block bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 px-4 py-1 rounded-full text-xs font-black">
+              <span id="preview-table">Table 3</span>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl inline-block shadow-xl border-4 border-amber-400/40">
+              <div id="standee-qrcode-canvas" class="w-48 h-48 flex items-center justify-center"></div>
+            </div>
+
+            <div class="space-y-1">
+              <p id="preview-tagline" class="text-xs font-bold text-slate-200">
+                Scan with Phone Camera to View 3D Menu & Order
+              </p>
+              <p class="text-[11px] text-slate-400">
+                Instant WhatsApp Ordering • 3D Realistic Food View
+              </p>
+            </div>
+
+            <div class="border-t border-slate-800 pt-3 text-[11px] text-slate-300 flex items-center justify-between">
+              <span>📞 <strong id="preview-phone">+91 000000000</strong></span>
+              <span class="text-emerald-400 font-bold">⚡ Free Wi-Fi</span>
+              <span>UPI Ready</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact-section" class="bg-slate-950 border-t border-slate-800 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl font-bold">
+              🥟</div>
+            <span class="font-heading font-black text-2xl text-white">MomoCraft</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            100% Pure Vegetarian handcrafted Himalayan dumplings, crispy kurkure momos, and live charcoal tandoor
+            platters.
+          </p>
+          <div class="text-xs text-emerald-400 font-bold flex items-center space-x-1.5">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>100% Pure Veg Certified Kitchen</span>
+          </div>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          <h3 class="font-heading font-bold text-white text-base">Direct Ordering</h3>
+          <p class="text-slate-400">Call us or order directly via WhatsApp.</p>
+          <div class="space-y-2 pt-1">
+            <a href="tel:+91000000000" class="flex items-center space-x-2 text-white hover:text-brand-400 transition">
+              <i class="fa-solid fa-phone text-brand-400"></i>
+              <span>+91 0000000000(Direct Call)</span>
+            </a>
+            <a href="https://wa.me/7983129724" target="_blank" rel="noopener noreferrer"
+              class="flex items-center space-x-2 text-white hover:text-emerald-400 transition">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+              <span>+91 7983128724 (WhatsApp Order)</span>
+            </a>
+            <div class="flex items-center space-x-2 text-slate-400">
+              <i class="fa-solid fa-clock text-amber-400"></i>
+              <span>Open Daily: 2:00Am – 11:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          <h3 class="font-heading font-bold text-white text-base">Visit Our Shop</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Shop No. 12, Food Plaza, Near Central Metro Gate 2.<br>
+            Opposite City Fountain, Food Street.<br>
+            Agra / Delhi NCR, India.
+          </p>
+          <div class="pt-1">
+            <a href="https://maps.google.com/?q=Momos+Food+Street" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-amber-300 border border-slate-700 px-4 py-2 rounded-xl font-bold transition">
+              <i class="fa-solid fa-location-arrow"></i>
+              <span>Open in Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="border-t border-slate-900 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+        <p>© 2026 MomoCraft Pure Veg. All rights reserved.</p>
+        <p>Crafted with 100% Pure Himalayan Passion.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RECIPE DETAILS MODAL -->
+  <div id="recipe-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-opacity">
+    <div
+      class="bg-slate-900 border border-emerald-500/40 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+        <div class="flex items-center space-x-3">
+          <span id="modal-dish-icon" class="text-2xl">🥟</span>
+          <div>
+            <h3 id="modal-dish-title" class="font-heading font-black text-xl text-white">Classic Steamed Veg Momos</h3>
+            <span id="modal-dish-badge" class="text-xs text-emerald-400 font-bold">100% Pure Veg • Bestseller</span>
+          </div>
+        </div>
+        <button id="btn-close-recipe-modal"
+          class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-6 text-xs text-slate-300">
+        <div class="grid grid-cols-3 gap-3">
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="text-slate-400 block text-[10px]">Diet</span>
+            <span class="font-bold text-emerald-400 text-xs">🌱 100% Pure Veg</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="text-slate-400 block text-[10px]">Spice Meter</span>
+            <span id="modal-spice" class="font-bold text-spicy text-xs">🌶️ Medium</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="text-slate-400 block text-[10px]">Steam Time</span>
+            <span id="modal-time" class="font-bold text-amber-400 text-xs">7 Mins</span>
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="font-heading font-bold text-sm text-amber-400 flex items-center space-x-1.5">
+            <i class="fa-solid fa-cookie-bite"></i>
+            <span>1. Dough Wrapper Technique</span>
+          </h4>
+          <p id="modal-dough"
+            class="text-slate-300 leading-relaxed bg-slate-950/70 p-3.5 rounded-xl border border-slate-800/80"></p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="font-heading font-bold text-sm text-emerald-400 flex items-center space-x-1.5">
+            <i class="fa-solid fa-mortar-pestle"></i>
+            <span>2. Inner Pure Veg Stuffing & Spices</span>
+          </h4>
+          <p id="modal-filling"
+            class="text-slate-300 leading-relaxed bg-slate-950/70 p-3.5 rounded-xl border border-slate-800/80"></p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="font-heading font-bold text-sm text-spicy flex items-center space-x-1.5">
+            <i class="fa-solid fa-pepper-hot"></i>
+            <span>3. Legendary Red Chili Garlic Dip Recipe</span>
+          </h4>
+          <div class="text-slate-300 leading-relaxed bg-slate-950/70 p-3.5 rounded-xl border border-slate-800/80">
+            Kashmiri whole red chilies boiled with fresh tomatoes, 12 cloves of garlic, vinegar, and rock salt. Blended
+            coarse and simmered in hot sesame oil with scallions.
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between">
+        <span class="text-slate-400 text-xs">Cooked fresh on order.</span>
+        <button id="modal-btn-add-order"
+          class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-md transition">
+          Add This Dish to Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE SEATING MODAL -->
+  <div id="table-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-opacity">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-sm rounded-3xl p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-heading font-bold text-lg text-white">Select Your Table</h3>
+        <button id="btn-close-table-modal" class="text-slate-400 hover:text-white text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <p class="text-xs text-slate-400">Choose your seating or select Takeaway packaging:</p>
+
+      <div class="grid grid-cols-4 gap-2" id="table-select-buttons">
+        <button class="tbl-btn py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+          data-tbl="Table 1">T-1</button>
+        <button class="tbl-btn py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+          data-tbl="Table 2">T-2</button>
+        <button class="tbl-btn py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs active"
+          data-tbl="Table 3">T-3</button>
+        <button class="tbl-btn py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+          data-tbl="Table 4">T-4</button>
+        <button class="tbl-btn py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+          data-tbl="Table 5">T-5</button>
+        <button class="tbl-btn py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+          data-tbl="Table 6">T-6</button>
+        <button class="tbl-btn py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+          data-tbl="Table 7">T-7</button>
+        <button class="tbl-btn py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+          data-tbl="Takeaway 🛍️">Takeaway</button>
+      </div>
+
+      <button id="btn-confirm-table"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs transition">
+        Confirm Seating
+      </button>
+    </div>
+  </div>
+
+  <!-- SLIDE-OVER ORDER DRAWER -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden transition-opacity"></div>
+  <aside id="cart-drawer"
+    class="fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-slate-900 border-l border-slate-800 z-50 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
+    <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-basket-shopping text-emerald-400"></i>
+        <h3 class="font-heading font-black text-lg text-white">Your Momo Order</h3>
+      </div>
+      <button id="btn-close-cart"
+        class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center text-sm">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="px-4 py-2.5 bg-slate-950/70 border-b border-slate-800 flex items-center justify-between text-xs">
+      <span class="text-slate-400">Order For:</span>
+      <span id="cart-table-badge"
+        class="font-bold text-emerald-300 bg-emerald-950 px-2.5 py-0.5 rounded-md border border-emerald-500/40">Table
+        3</span>
+    </div>
+
+    <div id="cart-items-list" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <div id="cart-empty-view" class="text-center py-16 space-y-3">
+        <div class="text-4xl">🥟</div>
+        <p class="font-bold text-white text-sm">Your order is empty</p>
+        <p class="text-xs text-slate-400">Select any pure veg momos from the menu!</p>
+      </div>
+    </div>
+
+    <div class="p-4 bg-slate-950 border-t border-slate-800 space-y-3">
+      <div>
+        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Cooking Note / Preference:</label>
+        <input type="text" id="order-notes-input" placeholder="e.g. Extra spicy red dip, no onion"
+          class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500">
+      </div>
+
+      <div class="space-y-1.5 text-xs text-slate-300 pt-1">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Subtotal:</span>
+          <span id="cart-calc-subtotal" class="font-bold text-white">₹0</span>
+        </div>
+        <div class="flex justify-between text-[11px]">
+          <span class="text-slate-400">Chutneys:</span>
+          <span class="text-emerald-400 font-semibold">Included Free</span>
+        </div>
+        <div class="border-t border-slate-800 pt-2 flex justify-between font-heading font-black text-base text-white">
+          <span>Grand Total:</span>
+          <span id="cart-calc-grand-total" class="text-amber-400">₹0</span>
+        </div>
+      </div>
+
+      <button id="btn-send-whatsapp-order"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/30 transition transform active:scale-98">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        <span>Send Order to WhatsApp (+91 0000000000)</span>
+      </button>
+
+      <a href="tel:+910000000"
+        class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold py-2 rounded-xl text-xs flex items-center justify-center space-x-2 transition">
+        <i class="fa-solid fa-phone text-amber-400"></i>
+        <span>Call Shop to Confirm</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-shelf" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+  <!-- External Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>
